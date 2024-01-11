@@ -10,10 +10,12 @@
 <body>
 	<form action="index.php" method="post">
 		<!--Hidden field for the word that needs translation-->
-		<input type="hidden" name="action" values="new_word">
+		<input type="hidden" name="action" value="new_word">
 
 		<!--Display current word for translation-->
-		<p>Translate: <?= $currentWord; ?></p>
+		<?php if (isset($currentWord)): ?>
+		<p>Translate: <?= $currentWord->getFrenchWord(); ?></p>
+		<?php endif; ?>
 
 		<!--Input field for the user's answer-->
 		<label for="user_answer">Your Answer:</label>

@@ -3,6 +3,7 @@
 class LanguageGame
 {
     private array $words;
+    private ?Word $currentWord = null;
 
     public function __construct()
     {
@@ -28,8 +29,23 @@ class LanguageGame
         // TODO: select a random word for the user to translate
 
         // Option B: user has just submitted an answer
+      
+  
+
+    }
+
+    private function handleAnswer(): void {
+        //Get the user's answer from the form submission
+        $userAnswer = $_POST['user_answer'];
+
+        $currentWord = $this->currentWord;
+
         // TODO: verify the answer (use the verify function in the word class) - you'll need to get the used word from the array first
+        $isCorrect = $currentWord->verify($userAnswer);
+
         // TODO: generate a message for the user that can be shown
+        $message = $isCorrect ? 'Correct! Well done!' : 'Incorrect. Try again.';
+        echo $message;
 
     }
 
