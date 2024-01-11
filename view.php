@@ -8,6 +8,18 @@
 	<title>Game</title>
 </head>
 <body>
-	<!-- TODO: add a form for the user to play the game -->
+	<form action="index.php" method="post">
+		<!--Hidden field for the word that needs translation-->
+		<input type="hidden" name="action" values="new_word">
+
+		<!--Display current word for translation-->
+		<p>Translate: <?= $currentWord; ?></p>
+
+		<!--Input field for the user's answer-->
+		<label for="user_answer">Your Answer:</label>
+		<input type="text" id="user_answer" name="user_answer" required>
+
+		<button type="submit">Submit Answer</button>
+	</form>
 </body>
 </html>
