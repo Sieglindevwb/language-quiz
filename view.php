@@ -18,8 +18,9 @@
 		<input type="text" id="user_answer" name="user_answer" required>
 
 		<button type="submit" name="action" value="submit_answer">Submit Answer</button>
-
-		<button type="submit" name="action" value="new_word">Get New Word</button>
 	</form>
+	<form action="index.php" method="post">
+        <button type="submit" name="action" value="new_word">Get New Word</button>
+    </form>
 </body>
 </html>

@@ -32,8 +32,14 @@ class LanguageGame
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $action = $_POST['action'] ?? '';
+
+        if ($action === 'submit_answer') {
             $this->handleOptionB();
+        } elseif ($action === 'new_word') {
+            $this->handleOptionA(); // Get a new word when the "Get New Word" button is clicked
         }
+    }
 
         // Option A: user visits site first time (or wants a new word)
         // TODO: select a random word for the user to translate
@@ -50,6 +56,17 @@ class LanguageGame
 
         // Display the word to the user
         echo 'Translate: ' . $randomWord->getFrenchWord();
+    }
+
+    public function handleFormSubmission(): void
+    {
+        $action = $_POST['action'] ?? '';
+
+        if ($action === 'submit_answer') {
+            $this->handleOptionB();
+        } elseif ($action === 'new_word') {
+            $this->handleOptionA(); // Get a new word when the "Get New Word" button is clicked
+        }
     }
 
     private function handleOptionB(): void
