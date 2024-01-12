@@ -25,6 +25,7 @@ class LanguageGame
 
     public function run(): void
     {
+        session_start();
         // TODO: check for option A or B
         if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_POST['action'])) {
             $this->handleOptionA();
@@ -45,6 +46,7 @@ class LanguageGame
     {
         // TODO: select a random word for the user to translate
         $randomWord = $this->getRandomWord();
+        $_SESSION["Words"] = $randomWord;
 
         // Display the word to the user
         echo 'Translate: ' . $randomWord->getFrenchWord();
@@ -54,8 +56,8 @@ class LanguageGame
     {
         // TODO: verify the answer (use the verify function in the word class) - you'll need to get the used word from the array first
         $userAnswer = $_POST['user_answer'] ?? '';
-        $randomWord = $this->getRandomWord();
-        if ($randomWord->verify($userAnswer)) {
+        $correctWord = $_SESSION["Words"];
+        if ($correctWord->verify($userAnswer)) {
                 echo 'Correct! Well done!';
             } else {
                 echo 'Incorrect. Try again.';
